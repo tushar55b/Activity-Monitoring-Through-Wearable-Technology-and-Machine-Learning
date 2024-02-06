@@ -1,22 +1,53 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/RY-BHXxM)
-# final-project-spring2023
+# Activity Monitoring Through Wearable Technology and Machine Learning
 
-## Only 1 person from each group should submit on the deliverable on GitHub.
+## Introduction
 
-- All data source files should be in Data folder with respective metadata documentation DATA-SOURCE-INFO.md
-- All code files (.ipynb, .py, .pdf) and any other files you want to keep should be in Code Folder
-- Ensure you keep your deliverables 1 & 2 that you have already submitted on Courseworks are also updated in the respective folders on Github in Deliverable 1 - Proposal and Deliverable 2 - Presentation respectively.
-- Update the REPORT-README.md and keep your deliverable 3 Report in that folder.
-Keep the final report named as AML_Group_xx_Section_y_Final_Report
+This repository contains the code and documentation for the final project of Group 23 for the course Applied Machine Learning (COMS W4995 - Topics in Computer Science). The project focuses on exploring human physiological responses using wearable technology data and machine learning techniques.
 
-Where xx is your Group No and Section is y
+The primary objective is to predict human activities based on physiological parameters such as heart rate and body temperature. The project utilizes the PAMAP2 Dataset, a comprehensive dataset capturing various physical activities performed by individuals. By applying machine learning and deep learning models, the project aims to make accurate predictions on these activities, which can have implications in health monitoring, fitness tracking, and beyond.
 
-Example 1: The person who is submitting : Group No is 12 and Section is Tuesday 
-Final Report should be named as AML_Group_12_Section_1_Final_Report
-To be kept in the Deliverable 3 - Report folder
+## Data
 
-Example 2: The person who is submitting : Group No is 5 and Section is Thursday
-Final Report should be named as AML_Group_05_Section_2_Final_Report
-To be kept in the Deliverable 3 - Report folder
+The dataset used in this project is the PAMAP2 Physical Activity Monitoring Dataset, collected through wireless Inertial Measurement Units and heart rate monitoring. It comprises data from 9 participants engaging in 13 distinct activities, offering a diverse set of samples for analysis.
 
-## Repeat Instructions : Only 1 person from each group should submit on the deliverable on GitHub.
+## Methods
+
+### Initial Data Exploration
+
+The initial exploration reveals a large dataset consisting of over 2.8 million entries distributed across 33 columns. The dataset maintains a high temporal resolution, with entries recorded at intervals of 0.01 seconds. The primary target variable, 'activityID,' is categorical, representing 13 different activities. Data preprocessing involves encoding categorical variables and ensuring the dataset's numerical consistency.
+
+### Data Cleaning
+
+Minimal data cleaning is required, with only a small portion of missing heart rate data. These missing values are handled by dropping corresponding samples to maintain data integrity. Additionally, feature correlation analysis indicates no significant collinearity, ensuring the dataset's suitability for model training.
+
+### Data Sampling
+
+To address class imbalance, undersampling is applied to the 'transient activities' category, fostering a more equitable distribution among activity labels and improving model generalization.
+
+## Results
+
+### Model Selections
+
+Two models are selected for activity prediction: K-Nearest Neighbors (KNN) and a Sequential Neural Network.
+
+#### KNN Model
+
+- **Training:** The KNN algorithm is trained with varying numbers of neighbors, with accuracy consistently above 93% across different configurations.
+- **Evaluation:** Analysis of accuracy scores demonstrates high performance across the range of neighbor values.
+
+#### Neural Network
+
+- **Training:** The Sequential Neural Network, designed for multi-class classification, achieves a validation accuracy of 79.7%.
+- **Evaluation:** The model exhibits competitive performance with a test accuracy of 79.7%.
+
+## Conclusion
+
+The project highlights the effectiveness of both KNN and Sequential Neural Network models in predicting human activities based on physiological data. While KNN excels in simplicity and transparency with high accuracy, the Sequential Neural Network demonstrates the ability to discern complex patterns, making it suitable for capturing intricate data relationships. Leveraging machine learning and deep learning techniques, the project contributes to advancements in health monitoring and fitness tracking through wearable technologies.
+
+## Discussion
+
+The experimentation phase also explored ensemble models such as pruned decision trees, random forests, and XGBoost. However, computational challenges arose due to the dataset's size, necessitating prolonged training times. Future work could involve exploring Long Short-Term Memory Recurrent Neural Networks (LSTM RNN) for enhanced time-series forecasting capabilities.
+
+## Reference
+
+[PAMAP2 Physical Activity Monitoring Dataset](https://archive.ics.uci.edu/ml/datasets/PAMAP2+Physical+Activity+Monitoring)
